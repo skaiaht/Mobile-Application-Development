@@ -1,3 +1,8 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+
 public class Program {
     public static int binarySearchRecursiveInternal(int[] array, int target, int low, int high) {
         if (low > high) {
@@ -38,10 +43,38 @@ public class Program {
         return -1;
     }
 
+    public static List<String> splitString(String str, char delimiter) {
+        List<String> result = new ArrayList<>();
+        int start = 0; // To track the start of each substring
+
+        for (int i = 0; i < str.length(); i++) {
+            // When we find the delimiter, extract the substring
+            if (str.charAt(i) == delimiter) {
+                result.add(str.substring(start, i));
+                start = i + 1; // Move the start to the character after the delimiter
+            }
+        }
+
+        // Add the last part of the string after the last delimiter
+        result.add(str.substring(start));
+
+        return result;
+    }
+
     public static void main(String[] args) {
-        int[] sortedArray = {78, 92, 113, 256, 349, 512};
+
+        int[] largeArray = new int[1_000_000];
+        Random random = new Random();
+
+        // Generate 1 million random numbers
+        for (int i = 0; i < largeArray.length; i++) {
+            largeArray[i] = random.nextInt(1_000_000);
+        }
+
+        Arrays.sort(largeArray);
+
         int target = 92;
-        int index = binarySearchRecursive(sortedArray, target);
+        int index = binarySearchRecursive(largeArray, target);
 
         if (index != -1) {
             System.out.println("[rec] found at index: " + index);
@@ -50,7 +83,7 @@ public class Program {
         }
 
         target = 72;
-        index = binarySearchRecursive(sortedArray, target);
+        index = binarySearchRecursive(largeArray, target);
 
         if (index != -1) {
             System.out.println("[rec] found at index: " + index);
@@ -58,9 +91,8 @@ public class Program {
             System.out.println("[rec] not found");
         }
 
-        sortedArray = new int[]{78, 92, 113, 256, 349, 512};
         target = 349;
-        index = binarySearchIterative(sortedArray, target);
+        index = binarySearchIterative(largeArray, target);
 
         if (index != -1) {
             System.out.println("[iter] found at index: " + index);
@@ -69,12 +101,23 @@ public class Program {
         }
 
         target = 379;
-        index = binarySearchIterative(sortedArray, target);
+        index = binarySearchIterative(largeArray, target);
 
         if (index != -1) {
             System.out.println("[iter] found at index: " + index);
         } else {
             System.out.println("[iter] not found");
+        }
+
+        String input = "Test sentence to split with custom method";
+        char delimiter = ' ';
+
+        // Call the custom split method
+        List<String> splitResult = splitString(input, delimiter);
+
+        // Print the result
+        for (String part : splitResult) {
+            System.out.println(part);
         }
     }
 }
