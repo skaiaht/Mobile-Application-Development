@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Lab 12</string>
+    <string name="score_format">Correct: %1$d | Incorrect: %2$d</string>
+    <string name="statistics_format">Quiz Statistics:\n\nTotal Questions: %d\nCorrect Answers: %d\nIncorrect Answers: %d\nSuccess Rate: %.1f%%</string>
+</resources>
