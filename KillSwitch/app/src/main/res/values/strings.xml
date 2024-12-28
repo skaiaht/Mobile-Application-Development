@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">KillSwitch</string>
+    <string name="accessibility_service_description">Browser blocker</string>
+    <string name="enable_browser_blocking">Enable browser blocking for calls</string>
+    <string name="enable_accessibility_service">Enable Accessibility Service</string>
+
+</resources>

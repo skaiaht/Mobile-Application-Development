@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Switch to enable or disable browser blocking -->
+    <Switch
+        android:id="@+id/blocking_switch"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="@string/enable_browser_blocking"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+    <!-- Button to guide the user to Accessibility settings -->
+    <Button
+        android:id="@+id/enable_accessibility_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enable_accessibility_service" />
+</LinearLayout>
+
+
