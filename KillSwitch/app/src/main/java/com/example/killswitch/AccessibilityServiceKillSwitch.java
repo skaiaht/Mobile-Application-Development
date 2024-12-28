@@ -10,6 +10,7 @@ public class AccessibilityServiceKillSwitch extends AccessibilityService {
     // Константы для логирования и работы с SharedPreferences
     private static final String TAG = "AccessibilityService";
     private static final String PREFS_NAME = "KillSwitchPrefs";
+    private static final String PREF_BLOCKING_ENABLED = "blocking_enabled";
     private static final String PREF_CALL_ACTIVE = "call_active";
 
     // Метод, вызываемый при получении события AccessibilityEvent
@@ -24,10 +25,11 @@ public class AccessibilityServiceKillSwitch extends AccessibilityService {
             // Доступ к SharedPreferences для проверки состояния звонка
             SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
             boolean isCallActive = prefs.getBoolean(PREF_CALL_ACTIVE, false);
+            boolean isFeatureActive = prefs.getBoolean(PREF_BLOCKING_ENABLED, false);
             Log.d(TAG, "Is call active: " + isCallActive);
 
             // Если звонок активен и открыто браузерное приложение, выполняются действия
-            if (isCallActive && isBrowserApp(packageName)) {
+            if (isCallActive && isBrowserApp(packageName) && isFeatureActive) {
                 Log.d(TAG, "Attempting to close browser: " + packageName);
 
                 // Попытка закрыть браузер с помощью трех последовательных действий "Назад"
